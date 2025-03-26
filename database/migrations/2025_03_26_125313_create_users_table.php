@@ -10,8 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->rememberToken(); // 'remember_token' sütununu ekliyoruz
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50)->unique();
+            $table->string('email', 100)->unique();
+            $table->string('password');
+            $table->timestamps();
+            $table->rememberToken();
         });
     }
 
@@ -20,8 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('remember_token'); // Geri alma işlemi için sütunu kaldırıyoruz
-        });
+        Schema::dropIfExists('users');
     }
 };
