@@ -41,7 +41,6 @@ class TaskController extends Controller
             }
         }
 
-        // Sayfalama ile görevleri getir
         $tasks = $query->paginate(5)->appends($request->query());
 
         return view('tasks.index', compact('tasks'));
