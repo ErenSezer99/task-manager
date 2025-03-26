@@ -33,9 +33,20 @@ class TaskController extends Controller
             $sortBy = $request->sort_by;
 
             if ($sortBy === 'priority') {
-                $query->orderByRaw("FIELD(priority, 'high', 'medium', 'low')");
+                // MySQL'deki FIELD fonksiyonu yerine PostgreSQL uyumlu sıralama yapıyoruz
+                $query->orderByRaw("CASE
+                                        WHEN priority = 'high' THEN 1
+                                        WHEN priority = 'medium' THEN 2
+                                        WHEN priority = 'low' THEN 3
+                                        ELSE 4
+                                      END");
             } elseif ($sortBy === 'status') {
-                $query->orderByRaw("FIELD(status, 'in_progress', 'completed')");
+                // Durum sıralamasını PostgreSQL uyumlu şekilde yapıyoruz
+                $query->orderByRaw("CASE
+                                        WHEN status = 'in_progress' THEN 1
+                                        WHEN status = 'completed' THEN 2
+                                        ELSE 3
+                                      END");
             } elseif ($sortBy === 'due_date') {
                 $query->orderBy('due_date', 'asc');
             }
