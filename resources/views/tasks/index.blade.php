@@ -101,23 +101,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editTaskModalLabel">Görevi Düzenle</h5>
-                <button type="button" class="close ms-auto" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="editTaskForm">
                     <input type="hidden" id="edit-task-uuid">
                     <div class="form-group">
-                        <label for="edit-title">Başlık</label>
+                        <label class="mb-1" for="edit-title">Başlık</label>
                         <input type="text" id="edit-title" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="edit-description">Açıklama</label>
+                        <label class="mb-2 mt-2" for="edit-description">Açıklama</label>
                         <textarea id="edit-description" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="edit-priority">Öncelik</label>
+                        <label class="mb-2 mt-2" for="edit-priority">Öncelik</label>
                         <select id="edit-priority" class="form-control">
                             <option value="low">Düşük</option>
                             <option value="medium">Orta</option>
@@ -125,10 +123,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="edit-due_date">Bitiş Tarihi</label>
+                        <label class="mb-2 mt-2" for="edit-due_date">Bitiş Tarihi</label>
                         <input type="date" id="edit-due_date" class="form-control" min="{{ date('Y-m-d') }}">
                     </div>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
                 </form>
             </div>
         </div>
