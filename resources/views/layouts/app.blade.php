@@ -74,6 +74,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/darkmode.js') }}" defer></script>
     <script src="{{ asset('js/dropdown.js') }}" defer></script>
+    <script src="{{ asset('js/modal-control.js') }}" defer></script>
 
 </body>
 
