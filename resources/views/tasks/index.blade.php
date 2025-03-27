@@ -108,6 +108,7 @@
                     <input type="hidden" id="edit-task-uuid">
                     <div class="form-group">
                         <label class="mb-2" for="edit-title">Başlık</label>
+
                         <input type="text" id="edit-title" class="form-control">
                     </div>
                     <div class="form-group">
