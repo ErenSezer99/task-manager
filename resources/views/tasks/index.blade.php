@@ -66,13 +66,22 @@
                 <td class="task-title">{{ $task->title }}</td>
                 <td class="task-description">{{ $task->description }}</td>
                 <td class="task-priority">
-                    @if ($task->priority == 'low')
-                    Düşük
-                    @elseif ($task->priority == 'medium')
-                    Orta
-                    @elseif ($task->priority == 'high')
-                    Yüksek
-                    @endif
+                    <span class="badge 
+                @if ($task->priority == 'low') 
+                    bg-success fs-6 fw-normal
+                @elseif ($task->priority == 'medium') 
+                    bg-warning fs-6 fw-normal text-dark
+                @elseif ($task->priority == 'high') 
+                    bg-danger fs-6 fw-normal
+                @endif">
+                        @if ($task->priority == 'low')
+                        Düşük
+                        @elseif ($task->priority == 'medium')
+                        Orta
+                        @elseif ($task->priority == 'high')
+                        Yüksek
+                        @endif
+                    </span>
                 </td>
 
                 <td class="task-due_date">{{ $task->due_date }}</td>
