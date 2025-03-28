@@ -33,7 +33,6 @@ class TaskController extends Controller
             $sortBy = $request->sort_by;
 
             if ($sortBy === 'priority') {
-                // MySQL'deki FIELD fonksiyonu yerine PostgreSQL uyumlu sıralama yapıyoruz
                 $query->orderByRaw("CASE
                                         WHEN priority = 'high' THEN 1
                                         WHEN priority = 'medium' THEN 2
@@ -41,7 +40,6 @@ class TaskController extends Controller
                                         ELSE 4
                                       END");
             } elseif ($sortBy === 'status') {
-                // Durum sıralamasını PostgreSQL uyumlu şekilde yapıyoruz
                 $query->orderByRaw("CASE
                                         WHEN status = 'in_progress' THEN 1
                                         WHEN status = 'completed' THEN 2
