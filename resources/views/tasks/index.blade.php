@@ -84,7 +84,27 @@
                     </span>
                 </td>
 
-                <td class="task-due_date">{{ $task->due_date }}</td>
+                <td class="task-due_date">
+                    {{ $task->due_date }}
+
+                    @php
+                    $dueDate = \Carbon\Carbon::parse($task->due_date); // Bitiş tarihini Carbon ile alıyoruz
+                    $today = \Carbon\Carbon::today(); // Bugün
+                    $daysLeft = $today->diffInDays($dueDate); // Bugünden itibaren kaç gün kaldığını hesapla
+                    @endphp
+
+                    @if ($daysLeft == 1)
+                    <span class="badge bg-warning fs-7 text-dark">Son 1 Gün</span>
+                    @elseif ($daysLeft == 0)
+                    <span class="badge bg-danger fs-7">Son Gün!</span>
+                    @elseif ($daysLeft == 2)
+                    <span class="badge bg-warning fs-7 text-dark">Son 2 Gün</span>
+                    @elseif ($daysLeft == 3)
+                    <span class="badge bg-info fs-7">Son 3 Gün</span>
+                    @endif
+                </td>
+
+
                 <td class="task-status" id="status-{{ $task->uuid }}">
                     {{ $task->status === 'in_progress' ? 'Devam Ediyor' : 'Tamamlandı' }}
                 </td>
